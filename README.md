@@ -1,36 +1,65 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Noah — Portfolio
 
-## Getting Started
+Personal site for professional work: selected projects, skills, and experience. Built as a fast, accessible one-pager with a dark editorial layout.
 
-First, run the development server:
+## Stack
+
+- **Next.js 16** (App Router, React 19, Turbopack)
+- **TypeScript**
+- **Tailwind CSS v4**
+- **Motion** for scroll and micro-interactions
+- **Lucide** for icons
+- **next/font** — Geist, Geist Mono, Instrument Serif
+
+Server Components handle static content. Client Components are used only where interaction is required.
+
+## Development
+
+Requires Node.js 20.9+ (`.nvmrc` pins 24).
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run lint
+npm run build
+npm start
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+On the same Wi-Fi, the Network URL printed by `next dev` can be opened on a phone.
 
-## Learn More
+## Project layout
 
-To learn more about Next.js, take a look at the following resources:
+```
+src/
+  app/                 # Routes, metadata, global CSS
+  components/
+    graphics/          # Mark and hero portrait
+    layout/            # Header, footer, skip link, scroll progress
+    motion/            # Shared animation primitives
+    sections/          # Page sections
+    ui/                # Small presentational pieces
+  content/site.ts      # Site copy, links, and asset paths
+  hooks/
+  lib/
+  types/
+public/images/         # Portrait and project stills
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Copy lives in `src/content/site.ts`. Components do not hard-code text.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Design
 
-## Deploy on Vercel
+Warm dark canvas, copper accent, serif display type. Motion is tied to content (section reveals, active nav) and respects `prefers-reduced-motion`. The hero portrait scales with the viewport so the full image stays visible.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Deploy
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Import the repository on [Vercel](https://vercel.com). Set `NEXT_PUBLIC_SITE_URL` to the production domain and keep `url` in `src/content/site.ts` in sync. Do not commit `.env` files; `.env.example` documents the public URL variable.
+
+## Accessibility
+
+Skip link, semantic landmarks, visible focus, reduced-motion support, and image alt text.
