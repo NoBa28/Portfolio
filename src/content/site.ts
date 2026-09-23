@@ -13,14 +13,14 @@ export const site: SiteContent = {
   availability: "Abacus · Lohnbuchhaltung",
   email: "noah.balzan@bluewin.ch",
   url: "https://example.com",
-  tagline: "Produkte, die sich präzise anfühlen.",
+  tagline: "Informatiker aus St.Gallen. Vorher Schreiner.",
   manifesto:
-    "Informatiker EFZ mit Fokus Applikationsentwicklung. Bei Abacus entwickle und warte ich die ERP-Software im Bereich Lohnbuchhaltung — auf einer von Delphi nach Java überführten Codebasis, die wir laufend erweitern und modernisieren.",
+    "Ich entwickle bei Abacus die Software für die Lohnbuchhaltung. Informatiker EFZ, und davor habe ich Schreiner gelernt.",
   roles: [
     "Software Development Engineer",
-    "ERP Lohnbuchhaltung",
-    "Full-Stack Engineer",
     "Informatiker EFZ",
+    "Gelernter Schreiner",
+    "Informatik HF, berufsbegleitend",
   ],
   keywords: [
     "Java",
@@ -32,16 +32,15 @@ export const site: SiteContent = {
     "JavaScript",
     "Linux",
   ],
-  // Replace public/images/portrait.jpg — the path can stay the same.
   portrait: {
     src: "/images/portrait.jpg",
-    alt: "Platzhalterporträt — später durch ein eigenes Foto ersetzen",
-    caption: "Porträt — Platzhalter",
+    alt: "Porträt von Noah Balzan",
+    caption: "",
   },
   nav: [
     { id: "ueber", href: "#ueber", label: "Über" },
     { id: "faehigkeiten", href: "#faehigkeiten", label: "Fähigkeiten" },
-    { id: "arbeit", href: "#arbeit", label: "Arbeit" },
+    { id: "arbeit", href: "#arbeit", label: "Projekte" },
     { id: "werdegang", href: "#werdegang", label: "Werdegang" },
     { id: "kontakt", href: "#kontakt", label: "Kontakt" },
   ],
@@ -51,28 +50,25 @@ export const site: SiteContent = {
   ],
   about: {
     eyebrow: "Über mich",
-    title: "Handwerk vor Lautstärke.",
+    title: "Zwei Lehren.",
     lead:
-      "Ich komme aus St.Gallen und entwickle bei Abacus die ERP-Software im Bereich Lohnbuchhaltung.",
+      "Die erste in der Werkstatt, die zweite am Computer. Dazwischen das Militär.",
     body: [
-      "Von 2021 bis 2025 habe ich bei der Abacus Research AG in Wittenbach die Lehre als Informatiker Fachrichtung Applikationsentwicklung EFZ abgeschlossen. Danach blieb ich im Unternehmen als Software Development Engineer.",
-      "Im Fachbereich Lohnbuchhaltung entwickle ich Features, behebe Fehler und warte die produktive Abacus-ERP. Die Anwendung steht auf Legacy-Code, der von Delphi nach Java portiert wurde; diesen Bestand erweitern und modernisieren wir täglich — unter anderem durch die Umstellung der Oberfläche von ULC auf Vaadin.",
+      "Von 2016 bis 2020 habe ich die Schreinerlehre bei der hr rechsteiner ag in Gossau gemacht, einer Schreinerei für Küchen und Innenausbau. Vier Jahre lang heisst das: Mass nehmen, zuschneiden, zusammenbauen, und am Schluss siehst du, ob es im Raum wirklich passt.",
+      "Danach war ich bei der Koster AG Holzwelten in Arnegg, bis ich ins Militär bin. 2021 habe ich bei der Abacus Research AG in Wittenbach noch einmal von vorne angefangen, als Informatiker Fachrichtung Applikationsentwicklung. 2025 das EFZ, und ich bin geblieben.",
+      "Heute bin ich Software Development Engineer in der Lohnbuchhaltung: Funktionen bauen, Fehler beheben, die Software am Laufen halten. Seit 2026 arbeite ich 90 Prozent. Ab Oktober 2026 studiere ich an der ZBW berufsbegleitend Informatik und bleibe in der Lohnbuchhaltung.",
     ],
-    image: {
-      src: "/images/atelier.jpg",
-      alt: "Stillleben eines Ateliers: Zirkel, Tinte und Papier auf einem Holzschreibtisch",
-    },
     stats: [
-      { value: "2021", label: "Lehre begonnen" },
-      { value: "2025", label: "EFZ abgeschlossen" },
-      { value: "ERP", label: "Lohnbuchhaltung" },
+      { value: "2016", label: "Schreinerlehre" },
+      { value: "2021", label: "Informatiklehre" },
+      { value: "2025", label: "EFZ Informatik" },
     ],
   },
   skills: {
     eyebrow: "Fähigkeiten",
-    title: "Alltag, Handwerk, Umgebung.",
+    title: "Womit ich arbeite.",
     lead:
-      "Was ich täglich bei der Portierung einsetze — und was ich zusätzlich gelernt habe.",
+      "Bei Abacus ist es Java und die Lohnbuchhaltung. Alles andere kommt aus der Ausbildung oder aus dem, was ich privat ausprobiere.",
     // 1 = basics, 5 = strongest. Add items as { name, level }.
     levelMax: 5,
     groups: [
@@ -80,7 +76,7 @@ export const site: SiteContent = {
         id: "daily",
         title: "Berufsalltag",
         description:
-          "Täglich im Einsatz bei Abacus — Portierung und Weiterentwicklung, aktuell die Umstellung von ULC auf Vaadin.",
+          "Täglich bei Abacus. Gerade stellen wir die Oberfläche von ULC auf Vaadin um.",
         items: [
           { name: "Java", level: 5 },
           { name: "ULC", level: 5 },
@@ -95,7 +91,7 @@ export const site: SiteContent = {
         id: "learned",
         title: "Sprachen & Web",
         description:
-          "In der Ausbildung und darüber hinaus gelernt — bereit, im Projekt wieder aufzunehmen.",
+          "In der Ausbildung und in eigenen Projekten gelernt. Nicht alles davon brauche ich jede Woche.",
         items: [
           { name: "SQL", level: 4 },
           { name: "HTML", level: 3 },
@@ -112,7 +108,7 @@ export const site: SiteContent = {
         id: "environment",
         title: "Systeme & KI",
         description:
-          "Umgebung im Alltag und privat — plus der Umgang mit KI-Werkzeugen.",
+          "Systeme, mit denen ich arbeite, und KI-Werkzeuge, die ich ständig nutze.",
         items: [
           { name: "Windows", level: 5 },
           { name: "Linux (Debian, Ubuntu)", level: 4 },
@@ -122,85 +118,61 @@ export const site: SiteContent = {
     ],
   },
   work: {
-    eyebrow: "Ausgewählte Arbeit",
-    title: "Fälle, keine Galerie.",
+    eyebrow: "Projekte",
+    title: "Eigene Projekte bis jetzt...",
     lead:
-      "Platzhalter: Drei Projekte, die Wirkung, Rolle und Handschrift zeigen. Bilder und Texte später durch echte Case Studies ersetzen.",
+      "Die Lohnbuchhaltung bei Abacus kann ich hier nicht herzeigen. Das hier sind zwei Programme, die ich selbst geschrieben habe. Beides liegt auf GitHub.",
     projects: [
       {
-        slug: "atlas",
-        title: "Atlas",
-        year: "2025",
-        role: "Lead Engineer",
+        slug: "smart-work-companion",
+        title: "Smart Work Companion",
+        year: "2026",
+        role: "Persönliches Projekt",
         summary:
-          "Platzhalter: Plattform für interne Abläufe. Komplexität reduziert, Ladezeiten halbiert, ein Design-System, das andere Teams übernehmen konnten.",
-        tags: ["Next.js", "TypeScript", "Design System"],
-        image: {
-          src: "/images/project-atlas.jpg",
-          alt: "Makroaufnahme überlappender Kupfer- und Metallflächen",
-        },
-        href: "#kontakt",
+          "Eine kleine Web-App für Aufgaben, Zeiterfassung und Notizen. Python, FastAPI und Jinja. Die Daten liegen lokal als JSON-Dateien, eine separate Datenbank braucht es nicht.",
+        tags: ["Python", "FastAPI", "Jinja"],
+        href: "https://github.com/NoBa28/Smart-Work-Companion-SWC",
       },
       {
-        slug: "signal",
-        title: "Signal",
-        year: "2024",
-        role: "Full-Stack",
+        slug: "person-management",
+        title: "Person Management",
+        year: "2026",
+        role: "Persönliches Projekt",
         summary:
-          "Platzhalter: Produkt mit Echtzeit-Feedback. Klare Informationsarchitektur, robuste API, Interface, das unter Last ruhig bleibt.",
-        tags: ["React", "Node.js", "Realtime"],
-        image: {
-          src: "/images/project-signal.jpg",
-          alt: "Glasplatten in einem dunklen Raster mit kupfernem Licht",
-        },
-        href: "#kontakt",
-      },
-      {
-        slug: "lumen",
-        title: "Lumen",
-        year: "2024",
-        role: "Product Engineer",
-        summary:
-          "Platzhalter: Exploratives Werkzeug für Daten. Visualisierung, die Entscheidungen beschleunigt statt Dashboards aufzublähen.",
-        tags: ["Python", "Visualization", "UX"],
-        image: {
-          src: "/images/project-lumen.jpg",
-          alt: "Kupferfarbene Tinte, die sich verästelt in dunklem Wasser",
-        },
-        href: "#kontakt",
+          "Ein Konsolenprogramm für Personen und ihre Adressen. Python und MySQL, aufgeteilt in Model, View und Controller, damit Logik, Ausgabe und Ablauf nicht in einem Haufen landen. Die wichtigen Abläufe haben Tests.",
+        tags: ["Python", "MySQL", "MVC"],
+        href: "https://github.com/NoBa28/Person-Management",
       },
     ],
   },
   experience: {
     eyebrow: "Werdegang",
-    title: "Lehre, Beruf, Weiterbildung.",
+    title: "Bisher.",
     lead:
-      "Von der Lehre zum Engineering an der Abacus-ERP — und die Weiterbildung, die dazugehört.",
+      "Schreinerei, Militär, dann der Wechsel zu Abacus. Ab Oktober 2026 studiere ich berufsbegleitend an der ZBW.",
     items: [
       {
-        company: "ZBW St.Gallen",
-        role: "Informatiker HF",
-        period: "2026 — heute",
-        location: "St.Gallen",
+        company: "hr rechsteiner ag",
+        role: "Schreinerlehre",
+        period: "2016 — 2020",
+        location: "Gossau",
         summary:
-          "Höhere Fachschule Informatik an der ZBW, berufsbegleitend.",
+          "Erste Lehre. Vier Jahre in einer Schreinerei für Küchen und Innenausbau.",
         highlights: [
-          "Studiengang Informatiker HF",
-          "Berufsbegleitend neben der Anstellung bei Abacus",
+          "Abgeschlossen 2020",
+          "Anschliessend Wechsel zur Koster AG Holzwelten",
         ],
       },
       {
-        company: "Abacus Research AG",
-        role: "Software Development Engineer",
-        period: "2025 — heute",
-        location: "Wittenbach, St.Gallen",
+        company: "Koster AG Holzwelten",
+        role: "Schreiner",
+        period: "2020 — 2021",
+        location: "Arnegg",
         summary:
-          "Full-Stack-Entwicklung an der Abacus-ERP im Bereich Lohnbuchhaltung: Features, Bugfixes und Wartung.",
+          "Nach der Lehre als Schreiner gearbeitet, bis das Militär angefangen hat.",
         highlights: [
-          "Weiterentwicklung und Wartung der Lohnbuchhaltung in der Abacus-ERP",
-          "Arbeit an der von Delphi nach Java überführten Codebasis — laufend erweitern und modernisieren",
-          "UI-Portierung von ULC nach Vaadin",
-          "Pensum seit 2026: 90 %",
+          "Koster AG Holzwelten in Arnegg",
+          "Danach, 2021, der Start der Informatiklehre",
         ],
       },
       {
@@ -209,23 +181,48 @@ export const site: SiteContent = {
         period: "2021 — 2025",
         location: "Wittenbach, St.Gallen",
         summary:
-          "Vierjährige Lehre als Informatiker Fachrichtung Applikationsentwicklung EFZ bei der Abacus Research AG.",
+          "Zweite Lehre: Informatiker EFZ, Fachrichtung Applikationsentwicklung.",
         highlights: [
-          "Abschluss Informatiker EFZ, Fachrichtung Applikationsentwicklung",
-          "Ausbildung bei der Abacus Research AG in Wittenbach",
+          "Vier Jahre, Abschluss mit dem EFZ 2025",
+          "Die ganze Lehre bei der Abacus Research AG in Wittenbach",
+        ],
+      },
+      {
+        company: "Abacus Research AG",
+        role: "Software Development Engineer",
+        period: "2025 — heute",
+        location: "Wittenbach, St.Gallen",
+        summary:
+          "Geblieben nach der Lehre. Entwicklung an der Lohnbuchhaltung der Abacus-ERP.",
+        highlights: [
+          "Neue Funktionen, Fehler beheben, Bestehendes warten",
+          "Java-Code, ursprünglich von Delphi portiert",
+          "Oberfläche von ULC nach Vaadin",
+          "Seit 2026 mit 90 Prozent Pensum",
+        ],
+      },
+      {
+        company: "ZBW St.Gallen",
+        role: "Informatiker HF",
+        period: "ab Oktober 2026",
+        location: "St.Gallen",
+        summary:
+          "Ab Oktober 2026 studiere ich hier berufsbegleitend Informatik. Die Arbeit bei Abacus geht weiter.",
+        highlights: [
+          "Studiengang Informatiker HF an der ZBW St.Gallen",
+          "Berufsbegleitend zur Stelle bei Abacus",
         ],
       },
     ],
   },
   contact: {
     eyebrow: "Kontakt",
-    title: "Lass uns etwas Präzises bauen.",
-    lead:
-      "Ich arbeite in St.Gallen an der Abacus-ERP im Bereich Lohnbuchhaltung. Kein Formular-Theater: schreib direkt.",
-    cta: "Nachricht senden",
+    title: "Hit me up.",
+    lead: "Für die Arbeit, die Programme oder einfach so. Eine Mail reicht.",
+    cta: "Mail schreiben",
   },
   footer: {
-    note: "Gebaut als lebendiges System, nicht als Folie.",
+    note: "Schreiner gelernt, jetzt Software. Aus St.Gallen.",
   },
 };
 

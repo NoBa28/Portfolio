@@ -1,4 +1,5 @@
 import { Reveal } from "@/components/motion/reveal";
+import { Typed } from "@/components/motion/typewriter";
 import { Section } from "@/components/ui/section";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { SkillLevel } from "@/components/ui/skill-level";
@@ -22,14 +23,14 @@ export function Skills() {
             <article className="h-full border border-line bg-ink/40 p-6 transition-colors duration-300 hover:border-copper/50 md:p-7">
               <div className="mb-4 flex items-start justify-between gap-4">
                 <h3 className="font-display text-2xl text-paper md:text-3xl">
-                  {group.title}
+                  <Typed text={group.title} />
                 </h3>
                 <span className="font-mono text-[10px] tracking-[0.2em] text-copper">
                   {String(index + 1).padStart(2, "0")}
                 </span>
               </div>
               <p className="mb-6 max-w-xl text-sm leading-relaxed text-muted">
-                {group.description}
+                <Typed text={group.description} />
               </p>
               <ul className="grid gap-x-10 gap-y-3 sm:grid-cols-2">
                 {group.items.map((item) => (

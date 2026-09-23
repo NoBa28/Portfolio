@@ -47,8 +47,14 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  /* Auto until after load, so a reload lands on the real scroll position
+     instead of animating toward a stale hash and stopping early. */
+  scroll-behavior: auto;
   background: var(--ink);
+}
+
+html[data-scroll="smooth"] {
+  scroll-behavior: smooth;
 }
 
 body {
@@ -124,20 +130,138 @@ body {
   min-height: 0;
 }
 
+.hero-portrait-slot {
+  container-type: size;
+  width: 100%;
+  min-height: 0;
+}
+
+.hero-portrait-box {
+  width: min(100cqw, calc(100cqh * 900 / 878));
+  aspect-ratio: 900 / 878;
+}
+
 .hero-copy {
   grid-area: copy;
   min-height: min-content;
 }
 
+.hero-role {
+  max-width: 100%;
+  height: 2.8em;
+  overflow: hidden;
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 0.75rem;
+  line-height: 1.35;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--paper-dim);
+}
+
+.hero-role p {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+@media (min-width: 640px) {
+  .hero-role {
+    font-size: 0.875rem;
+    letter-spacing: 0.14em;
+  }
+}
+
+.type-run {
+  display: inline-grid;
+  max-width: 100%;
+  vertical-align: top;
+}
+
+.type-run > .type-run-text {
+  grid-area: 1 / 1;
+  max-width: 100%;
+}
+
+.type-cursor {
+  display: inline-block;
+  margin-left: 0.12em;
+  color: var(--copper);
+  font-weight: 400;
+  animation: type-cursor 0.8s steps(1) infinite;
+}
+
+@keyframes type-cursor {
+  0%,
+  45% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.graphic-hover {
+  transition: transform 700ms ease;
+}
+
+.graphic-frame:hover .graphic-hover {
+  transform: scale(1.035);
+}
+
+.graphic-corner {
+  pointer-events: none;
+  position: absolute;
+  z-index: 1;
+  width: clamp(1.5rem, 18%, 4.5rem);
+  height: clamp(1.5rem, 18%, 4.5rem);
+}
+
+.graphic-corner-tl {
+  top: -0.7rem;
+  left: -0.7rem;
+  border-top: 1px solid color-mix(in srgb, var(--copper) 75%, transparent);
+  border-left: 1px solid color-mix(in srgb, var(--copper) 75%, transparent);
+}
+
+.graphic-corner-br {
+  right: -0.7rem;
+  bottom: -0.7rem;
+  border-right: 1px solid color-mix(in srgb, var(--copper) 42%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--copper) 42%, transparent);
+}
+
+.graphic-fade-photo {
+  -webkit-mask-image: radial-gradient(
+    ellipse 86% 80% at 46% 56%,
+    #000 54%,
+    transparent 100%
+  );
+  mask-image: radial-gradient(
+    ellipse 86% 80% at 46% 56%,
+    #000 54%,
+    transparent 100%
+  );
+}
+
+.graphic-fade-mark {
+  -webkit-mask-image:
+    linear-gradient(to right, transparent, #000 7%, #000 93%, transparent),
+    linear-gradient(to bottom, transparent, #000 8%, #000 92%, transparent);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    linear-gradient(to right, transparent, #000 7%, #000 93%, transparent),
+    linear-gradient(to bottom, transparent, #000 8%, #000 92%, transparent);
+  mask-composite: intersect;
+}
+
 .hero-portrait-image {
   display: block;
-  width: auto;
-  height: auto;
-  max-width: 100%;
-  max-height: 100%;
-  min-width: 0;
-  min-height: 0;
+  width: 100%;
+  height: 100%;
   object-fit: contain;
+  object-position: center;
 }
 
 .hero-portrait-caption {
@@ -149,6 +273,10 @@ body {
   .hero-marquee {
     display: none;
   }
+
+  .hero-actions {
+    justify-content: center;
+  }
 }
 
 @media (min-width: 1024px) {
@@ -157,7 +285,7 @@ body {
   }
 }
 
-@media (min-width: 768px), ((orientation: landscape) and (max-height: 560px)) {
+@media (min-width: 768px) {
   .hero-grid {
     grid-template-areas:
       "intro portrait"
@@ -171,14 +299,12 @@ body {
   }
 
   .hero-portrait {
-    min-height: 0;
+    height: min(52vh, 22rem);
     max-height: min(52vh, 22rem);
+    align-self: center;
     justify-self: end;
     width: 100%;
-  }
-
-  .hero-portrait-image {
-    max-height: min(48vh, 20rem);
+    padding-inline: 1rem;
   }
 }
 
@@ -189,11 +315,8 @@ body {
   }
 
   .hero-portrait {
+    height: min(58vh, 26rem);
     max-height: min(58vh, 26rem);
-  }
-
-  .hero-portrait-image {
-    max-height: min(52vh, 24rem);
   }
 }
 
@@ -203,11 +326,8 @@ body {
   }
 
   .hero-portrait {
+    height: min(62vh, 30rem);
     max-height: min(62vh, 30rem);
-  }
-
-  .hero-portrait-image {
-    max-height: min(56vh, 28rem);
   }
 }
 
@@ -236,11 +356,24 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html {
+  html,
+  html[data-scroll="smooth"] {
     scroll-behavior: auto;
   }
 
   .marquee-track {
     animation: none !important;
+  }
+
+  .type-cursor {
+    animation: none;
+  }
+
+  .graphic-hover {
+    transition: none;
+  }
+
+  .graphic-frame:hover .graphic-hover {
+    transform: none;
   }
 }

@@ -1,4 +1,5 @@
 import { Star } from "lucide-react";
+import { Typed } from "@/components/motion/typewriter";
 import { cn } from "@/lib/cn";
 
 type SkillLevelProps = {
@@ -13,7 +14,9 @@ export function SkillLevel({ name, level, max = 5 }: SkillLevelProps) {
 
   return (
     <div className="flex items-center justify-between gap-4">
-      <span className="text-sm text-paper">{name}</span>
+      <span className="min-w-0 text-sm break-words text-paper">
+        <Typed text={name} />
+      </span>
       <span
         className="flex shrink-0 items-center gap-0.5"
         role="img"

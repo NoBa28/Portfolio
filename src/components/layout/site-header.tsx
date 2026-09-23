@@ -2,11 +2,12 @@
 
 import { Menu, X } from "lucide-react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState, type MouseEvent } from "react";
 import { Monogram } from "@/components/graphics/monogram";
 import { site } from "@/content/site";
 import { useActiveSection } from "@/hooks/use-active-section";
 import { cn } from "@/lib/cn";
+import { handleSectionLink, scrollToSection } from "@/lib/scroll-to-section";
 
 const ids = site.nav.map((item) => item.id);
 
@@ -15,6 +16,7 @@ export function SiteHeader() {
   const reduce = useReducedMotion();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const pendingHref = useRef<string | null>(null);
 
   useEffect(() => {
     function onScroll() {
@@ -43,10 +45,28 @@ export function SiteHeader() {
     };
   }, [open]);
 
+  useEffect(() => {
+    if (open) {
+      return;
+    }
+    const href = pendingHref.current;
+    if (!href) {
+      return;
+    }
+    pendingHref.current = null;
+    scrollToSection(href.slice(1));
+  }, [open]);
+
+  function followFromMenu(event: MouseEvent<HTMLAnchorElement>, href: string) {
+    event.preventDefault();
+    pendingHref.current = href;
+    setOpen(false);
+  }
+
   return (
     <header
       className={cn(
-        "fixed inset-x-0 top-0 z-50 transition-colors duration-300",
+        "fixed inset-x-0 top-0 z-50 pt-[env(safe-area-inset-top)] transition-colors duration-300",
         open
           ? "bottom-0 overflow-y-auto border-b border-line bg-ink"
           : scrolled
@@ -54,9 +74,13 @@ export function SiteHeader() {
             : "border-b border-transparent bg-transparent",
       )}
     >
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 sm:h-[4.25rem] sm:px-8 md:px-12 lg:px-16">
+      <div
+        data-header-bar
+        className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 sm:h-[4.25rem] sm:px-8 md:px-12 lg:px-16"
+      >
         <a
           href="#top"
+          onClick={(event) => handleSectionLink(event, "#top")}
           className="flex items-center gap-2.5 text-paper transition-colors hover:text-copper"
         >
           <Monogram className="size-8 text-copper" />
@@ -72,6 +96,7 @@ export function SiteHeader() {
               <a
                 key={item.id}
                 href={item.href}
+                onClick={(event) => handleSectionLink(event, item.href)}
                 className={cn(
                   "relative font-mono text-[11px] uppercase tracking-[0.22em] transition-colors",
                   isActive ? "text-copper" : "text-paper-dim hover:text-paper",
@@ -90,7 +115,7 @@ export function SiteHeader() {
           })}
         </nav>
 
-        <div className="hidden items-center gap-3 lg:flex">
+        <div className="hidden items-center gap-3 xl:flex">
           <span className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.18em] text-sage">
             <span className="size-1.5 rounded-full bg-sage shadow-[0_0_10px_var(--sage)]" />
             {site.availability}
@@ -128,7 +153,7 @@ export function SiteHeader() {
                 <a
                   key={item.id}
                   href={item.href}
-                  onClick={() => setOpen(false)}
+                  onClick={(event) => followFromMenu(event, item.href)}
                   className="flex items-baseline justify-between border-b border-line py-4"
                 >
                   <span className="font-display text-3xl text-paper">

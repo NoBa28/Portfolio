@@ -1,4 +1,5 @@
 import { Reveal } from "@/components/motion/reveal";
+import { Typed } from "@/components/motion/typewriter";
 import { Section } from "@/components/ui/section";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { site } from "@/content/site";
@@ -29,17 +30,17 @@ export function Experience() {
             <Reveal delay={index * 0.05}>
               <div className="flex flex-col gap-2 sm:flex-row sm:items-baseline sm:justify-between">
                 <h3 className="font-display text-2xl text-paper md:text-3xl">
-                  {item.role}
+                  <Typed text={item.role} />
                 </h3>
                 <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-copper">
-                  {item.period}
+                  <Typed text={item.period} />
                 </p>
               </div>
               <p className="mt-1 text-sm text-paper-dim">
-                {item.company} · {item.location}
+                <Typed text={`${item.company} · ${item.location}`} />
               </p>
               <p className="mt-4 max-w-2xl text-base leading-relaxed text-muted">
-                {item.summary}
+                <Typed text={item.summary} />
               </p>
               <ul className="mt-4 space-y-2">
                 {item.highlights.map((highlight) => (
@@ -48,7 +49,7 @@ export function Experience() {
                     className="flex gap-3 text-sm leading-relaxed text-paper-dim"
                   >
                     <span className="mt-2 size-1 shrink-0 rounded-full bg-copper" />
-                    {highlight}
+                    <Typed text={highlight} />
                   </li>
                 ))}
               </ul>

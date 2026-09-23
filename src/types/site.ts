@@ -34,10 +34,6 @@ export type Project = {
   role: string;
   summary: string;
   tags: string[];
-  image: {
-    src: string;
-    alt: string;
-  };
   href?: string;
 };
 
@@ -74,10 +70,6 @@ export type SiteContent = {
     title: string;
     lead: string;
     body: string[];
-    image: {
-      src: string;
-      alt: string;
-    };
     stats: Stat[];
   };
   skills: {

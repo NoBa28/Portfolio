@@ -10,7 +10,7 @@ export default function NotFound() {
         Diese Seite gibt es nicht.
       </h1>
       <p className="mt-6 max-w-md text-paper-dim">
-        Der Pfad führt ins Leere. Zurück zur Übersicht — dort liegt die Arbeit.
+        Hier liegt nichts. Zurück zur Startseite.
       </p>
       <div className="mt-10">
         <ButtonLink href="/">Zur Startseite</ButtonLink>

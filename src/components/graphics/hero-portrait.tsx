@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { cn } from "@/lib/cn";
 
 type HeroPortraitProps = {
@@ -23,16 +22,24 @@ export function HeroPortrait({
         className,
       )}
     >
-      <div className="relative flex min-h-0 w-full flex-1 items-center justify-center p-3">
-        <Image
-          src={src}
-          alt={alt}
-          width={900}
-          height={1200}
-          priority={priority}
-          className="hero-portrait-image"
-          sizes="(min-width: 1440px) 28vw, (min-width: 768px) 32vw, 90vw"
-        />
+      <div className="hero-portrait-slot relative min-h-0 w-full flex-1">
+        <div className="absolute inset-0 flex items-center justify-center p-3">
+          <div className="graphic-frame hero-portrait-box relative">
+            <span className="graphic-corner graphic-corner-tl" aria-hidden="true" />
+            <span className="graphic-corner graphic-corner-br" aria-hidden="true" />
+            {/* Plain img so the browser loads public/images/portrait.jpg itself.
+                next/image rewrites that to /_next/image and was still serving a cached file. */}
+            <img
+              src={src}
+              alt={alt}
+              width={900}
+              height={878}
+              fetchPriority={priority ? "high" : "auto"}
+              decoding="async"
+              className="hero-portrait-image graphic-hover graphic-fade-photo h-full w-full"
+            />
+          </div>
+        </div>
       </div>
       {caption ? (
         <figcaption className="hero-portrait-caption mt-2 shrink-0 font-mono text-[10px] uppercase tracking-[0.2em] text-muted">

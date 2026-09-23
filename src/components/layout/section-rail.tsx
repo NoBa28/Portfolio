@@ -3,6 +3,7 @@
 import { site } from "@/content/site";
 import { useActiveSection } from "@/hooks/use-active-section";
 import { cn } from "@/lib/cn";
+import { handleSectionLink } from "@/lib/scroll-to-section";
 
 const ids = site.nav.map((item) => item.id);
 
@@ -21,6 +22,7 @@ export function SectionRail() {
             <li key={item.id}>
               <a
                 href={item.href}
+                onClick={(event) => handleSectionLink(event, item.href)}
                 className={cn(
                   "group flex items-center gap-3 font-mono text-[10px] tracking-[0.22em] uppercase transition-colors",
                   isActive ? "text-copper" : "text-muted hover:text-paper",

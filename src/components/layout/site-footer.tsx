@@ -1,3 +1,4 @@
+import { Typed } from "@/components/motion/typewriter";
 import { site } from "@/content/site";
 
 export function SiteFooter() {
@@ -7,9 +8,11 @@ export function SiteFooter() {
     <footer className="border-t border-line px-5 py-10 sm:px-8 md:px-12 lg:px-16">
       <div className="mx-auto flex max-w-6xl flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <p className="font-display text-2xl text-paper">{site.name}</p>
+          <p className="font-display text-2xl text-paper">
+            <Typed text={site.name} />
+          </p>
           <p className="mt-2 max-w-sm text-sm leading-relaxed text-muted">
-            {site.footer.note}
+            <Typed text={site.footer.note} />
           </p>
         </div>
         <div className="flex flex-col gap-3 sm:items-end">

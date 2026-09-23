@@ -5,6 +5,7 @@ import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { useEffect, useState } from "react";
 import { HeroPortrait } from "@/components/graphics/hero-portrait";
 import { Magnetic } from "@/components/motion/magnetic";
+import { Typed } from "@/components/motion/typewriter";
 import { ButtonLink } from "@/components/ui/button-link";
 import { site } from "@/content/site";
 import { easeOutExpo } from "@/lib/motion";
@@ -26,7 +27,7 @@ export function Hero() {
   return (
     <section
       id="top"
-      className="relative isolate flex h-svh flex-col overflow-x-clip px-5 pt-20 pb-[max(1.5rem,env(safe-area-inset-bottom))] sm:px-8 md:h-dvh md:px-12 md:pt-24 lg:px-16"
+      className="relative isolate flex h-svh flex-col overflow-x-clip px-5 pt-[calc(4.75rem+env(safe-area-inset-top))] pb-[max(1.5rem,env(safe-area-inset-bottom))] sm:px-8 md:h-dvh md:px-12 md:pt-[calc(5.5rem+env(safe-area-inset-top))] lg:px-16"
     >
       <div className="pointer-events-none absolute inset-0 grid-fade" />
 
@@ -38,9 +39,13 @@ export function Hero() {
             transition={{ duration: 0.7, ease: easeOutExpo }}
             className="mb-3 flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-[11px] uppercase tracking-[0.28em] text-copper sm:mb-5"
           >
-            <span>Portfolio / {new Date().getFullYear()}</span>
+            <span>
+              <Typed text={`Portfolio / ${new Date().getFullYear()}`} />
+            </span>
             <span className="h-px w-8 bg-copper/60" aria-hidden="true" />
-            <span>{site.location}</span>
+            <span>
+              <Typed text={site.location} />
+            </span>
           </motion.p>
 
           <motion.h1
@@ -49,11 +54,11 @@ export function Hero() {
             transition={{ duration: 0.85, delay: 0.08, ease: easeOutExpo }}
             className="font-display text-[clamp(2.6rem,10vw,6.25rem)] leading-[0.85] tracking-[-0.04em] text-paper"
           >
-            {site.shortName}
+            <Typed text={site.shortName} />
             <span className="text-copper">.</span>
           </motion.h1>
 
-          <div className="mt-3 h-7 overflow-hidden font-mono text-xs uppercase tracking-[0.18em] text-paper-dim sm:mt-4 sm:h-8 sm:text-sm md:text-base">
+          <div className="hero-role mt-3 max-w-full sm:mt-4">
             <AnimatePresence mode="wait">
               <motion.p
                 key={site.roles[index]}
@@ -89,7 +94,7 @@ export function Hero() {
             transition={{ duration: 0.7, delay: 0.22, ease: easeOutExpo }}
             className="hero-copy-text max-w-md text-sm leading-relaxed text-paper-dim sm:text-base md:text-lg"
           >
-            {site.manifesto}
+            <Typed text={site.manifesto} />
           </motion.p>
 
           <motion.div
@@ -100,13 +105,13 @@ export function Hero() {
           >
             <Magnetic>
               <ButtonLink href="#arbeit">
-                Arbeit ansehen
+                <Typed text="Projekte ansehen" />
                 <ArrowDownRight size={16} />
               </ButtonLink>
             </Magnetic>
             <Magnetic>
               <ButtonLink href="#kontakt" variant="ghost">
-                Kontakt
+                <Typed text="Kontakt" />
               </ButtonLink>
             </Magnetic>
           </motion.div>
