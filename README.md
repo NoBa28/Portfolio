@@ -1,6 +1,7 @@
 # Noah — Portfolio
 
 Personal site for professional work: selected projects, skills, and experience. Built as a fast, accessible one-pager with a dark editorial layout.
+Visit [www.noahbalzan.ch]
 
 ## Stack
 
