@@ -34,17 +34,7 @@ export function Contact() {
       </div>
 
       <Reveal delay={0.22}>
-        <a
-          href={`mailto:${site.email}`}
-          className="group mt-10 inline-flex max-w-full items-center gap-4 break-all font-display text-[clamp(1.35rem,6vw,3rem)] text-paper transition-colors hover:text-copper"
-        >
-          <Typed text={site.email} />
-          <ArrowUpRight className="size-7 transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 sm:size-9" />
-        </a>
-      </Reveal>
-
-      <Reveal delay={0.28}>
-        <div className="mt-12 flex flex-wrap items-center gap-3">
+        <div className="mt-10 flex flex-wrap items-center gap-3">
           <Magnetic>
             <ButtonLink href={`mailto:${site.email}`}>
               {contact.cta}

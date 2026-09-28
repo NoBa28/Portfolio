@@ -12,13 +12,12 @@ export const site: SiteContent = {
   location: "St.Gallen, Schweiz",
   availability: "Abacus · Lohnbuchhaltung",
   email: "noah.balzan@bluewin.ch",
-  url: "https://example.com",
-  tagline: "Informatiker aus St.Gallen. Vorher Schreiner.",
+  url: "https://www.noahbalzan.ch",
+  tagline: "Informatiker aus St.Gallen.",
   manifesto:
     "Ich entwickle bei Abacus die Software für die Lohnbuchhaltung. Informatiker EFZ, und davor habe ich Schreiner gelernt.",
   roles: [
     "Software Development Engineer",
-    "Informatiker EFZ",
     "Gelernter Schreiner",
     "Informatik HF, berufsbegleitend",
   ],
@@ -218,11 +217,11 @@ export const site: SiteContent = {
   contact: {
     eyebrow: "Kontakt",
     title: "Hit me up.",
-    lead: "Für die Arbeit, die Programme oder einfach so. Eine Mail reicht.",
+    lead: "Für die Umsetzung von Websites oder anderen IT-Projekten.",
     cta: "Mail schreiben",
   },
   footer: {
-    note: "Schreiner gelernt, jetzt Software. Aus St.Gallen.",
+    note: "Nerd mit Leidenschaft.",
   },
 };
 
